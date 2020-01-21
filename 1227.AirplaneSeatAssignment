@@ -1,0 +1,15 @@
+double nthPersonGetsNthSeat(int n){
+    
+    double percentage = 0;
+    
+    //there is always going to be a person that has to choose from 2 seats.
+    
+    if(n == 1){
+        percentage = 1.0f;
+        return percentage;
+    }else{
+        percentage = 0.5f;
+        return percentage;
+    }
+
+}
