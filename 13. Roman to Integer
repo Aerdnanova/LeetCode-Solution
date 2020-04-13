@@ -1,0 +1,106 @@
+class Solution {
+    public int romanToInt(String s) {
+        
+        int value = 0;
+        int I = 1, V = 5, X = 10, L = 50, C = 100, D = 500, M = 1000;
+        
+        for(int i = 0; i < s.length(); i++) {
+            
+            if(s.charAt(i) == 'I')
+            {
+                if(i + 1 < s.length()) {
+                    
+                    if(s.charAt(i + 1) == 'V'){
+                        
+                        value += (V - I);
+                        i++;
+                    } else if (s.charAt(i + 1) == 'X') {
+                        
+                        value += (X - I);
+                        i++;
+                    } else {
+                        
+                        value += I;
+                    }
+                } else {
+                    
+                     value += I;
+                }
+                
+            } else if (s.charAt(i) == 'X') {
+                
+                if(i + 1 < s.length()) {
+                    
+                    if(s.charAt(i + 1) == 'L'){
+                        
+                        value += (L - X);
+                        i++;
+                    } else if (s.charAt(i + 1) == 'C') {
+                        
+                        value += (C - X);
+                        i++;
+                    } else {
+                        
+                        value += X;
+                    }
+                    
+                } else {
+                    
+                     value += X;
+                }
+                
+            } else if(s.charAt(i) == 'C') {
+                
+                if(i + 1 < s.length()) {
+                    
+                    if(s.charAt(i + 1) == 'D'){
+                        
+                        value += (D - C);
+                        i++;
+                    } else if (s.charAt(i + 1) == 'M') {
+                        
+                        value += (M - C);
+                        i++;
+                    } else {
+                        
+                        value += C;
+                    }
+                } else {
+                    
+                     value += C;
+                }
+           
+            } else {
+                
+                switch(s.charAt(i)) {
+                    case 'I':
+                        value += I;
+                        break;
+                    case 'V':
+                        value += V;
+                        break;
+                    case 'X':
+                        value += X;
+                        break;
+                    case 'L':
+                        value += L;
+                        break;
+                    case 'C':
+                        value += C;
+                        break;
+                    case 'D':
+                        value += D;
+                        break;
+                    case 'M':
+                        value += M;
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+        
+        return value;
+    }
+    
+}
