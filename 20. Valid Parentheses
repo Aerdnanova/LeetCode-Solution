@@ -1,0 +1,58 @@
+class Solution {
+public:
+    bool isValid(string s) {
+        stack <char> par;
+        for (int i = 0; i < s.length(); i++) {
+            
+            if(!par.empty()){
+                
+                if(s[i] == ')') {
+                    
+                    if(par.top() == '(') {
+                        par.pop();
+                    } else {
+                        
+                        return false;
+                    }
+                    
+                } else if ( s[i] == ']') { 
+                
+                    if(par.top() == '[') {
+                        par.pop();
+                    } else {
+                        
+                        return false;
+                    }
+                    
+                } else if (s[i] == '}') { 
+                
+                    if(par.top() == '{') {
+                        par.pop();
+                    } else {
+                        
+                        return false;
+                    }
+                    
+                } else {
+                    
+                    par.push(s[i]);
+                }
+                
+            } else {
+                
+                if(s[i] == ')' || 
+                   s[i] == '}' || 
+                   s[i] == ']' ) {
+                    return false;
+                } else {
+                    par.push(s[i]);
+                }
+            }
+        }
+        
+        if (par.empty()) {
+            return true;
+        }
+        return false;
+    }
+};
